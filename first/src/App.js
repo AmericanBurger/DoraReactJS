@@ -2,7 +2,29 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class ToDo extends Component {
+class ToDoItem extends Component {
+  static defaultProps = {
+    done: false
+  }
+  state = {
+    done: this.props.done
+  }
+
+  toggleDone = () => {
+    this.setState({done: !this.state.done})
+  }
+
+  render() {
+    const { text } = this.props
+    return(
+      <div onClick={this.toggleDone} className={this.state.done ? 'doneToDo' : ''}>
+        <p>{text}</p>
+      </div>
+    )
+  }
+}
+
+class ToDoList extends Component {
   state = {
     tasks: this.props.tasks,
     draft: ''
@@ -12,7 +34,7 @@ class ToDo extends Component {
     this.setState({draft: event.target.value})
   }
 
-  addThing = () => {
+  addToDo = () => {
     const { tasks, draft } = this.state
     const list = tasks
     list.push(draft)
@@ -25,9 +47,9 @@ class ToDo extends Component {
     return (
       <div>
         <h1>{title}</h1>
-        {tasks.map(task => <div><p>{task}</p></div>)}
+        {tasks.map(task => <ToDoItem text={task.text} done={task.done} />)}
         <input type='text' onChange={this.updateDraft} value={draft} />
-        <button onClick={this.addThing}>Submit</button>
+        <button onClick={this.addToDo}>Submit</button>
       </div>
     )
   }
@@ -35,8 +57,8 @@ class ToDo extends Component {
 
 class App extends Component {
   myTab = [
-    'Elo elo 3 2 0',
-    'benc'
+    {text: 'Elo elo 3 2 0'},
+    {text: 'benc'}
   ]
 
   render() {
@@ -48,7 +70,7 @@ class App extends Component {
         </div>
 
         <p className="App-intro">
-          <ToDo title="Siema siema o tej porze każdy wypić może" tasks={this.myTab} />
+          <ToDoList title="Siema siema o tej porze każdy wypić może" tasks={this.myTab} />
         </p>
       </div>
     );
