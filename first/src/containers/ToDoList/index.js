@@ -7,7 +7,7 @@ const Container = styled.div`
   background: #2b2e39;
   margin: 0 auto;
   width: 80%;
-  max-width: 600px;
+  max-width: 800px;
   padding: 14px;
   border-radius: 14px;
   margin-top: 14px;
@@ -15,15 +15,25 @@ const Container = styled.div`
 
 const Header = styled.h1`
   color: #fff;
+  clear: both;
+`
+
+const ClearButton = styled.button`
+  border-radius: 10px;
+  background: red;
+  padding: 5px;
+  color: #fff;
+  margin-bottom: 10px;
+  float: left;
 `
 
 class ToDoList extends Component {
     static defaultProps = {
         tasks: [
-            {text: 'Elo elo 3 2 0'},
-            {text: 'benc'}
+            {text: 'first task'},
+            {text: 'second task'}
         ],
-        title: "Siema siema o tej porze każdy wypić może"
+        title: "To do:"
     }
 
     state = {
@@ -42,11 +52,16 @@ class ToDoList extends Component {
     this.setState({tasks: list, draft: ''})
   }
 
+  removeAll = () => {
+    this.setState({tasks: []})
+  }
+
   render() {
     const { title } = this.props
     const { tasks, draft } = this.state
     return (
       <Container>
+        <ClearButton onClick={this.removeAll}>Remove all</ClearButton>
         <Header>{title}</Header>
         {tasks.map(task => <ToDoItem text={task.text} done={task.done} />)}
         <NewToDoForm 
