@@ -29,10 +29,7 @@ const ClearButton = styled.button`
 
 class ToDoList extends Component {
     static defaultProps = {
-        tasks: [
-            {text: 'first task'},
-            {text: 'second task'}
-        ],
+        tasks: [],
         title: "To do:"
     }
 
