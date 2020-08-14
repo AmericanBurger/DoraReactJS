@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Item = styled.div`
   background: #343744;
@@ -10,6 +11,21 @@ const Item = styled.div`
   text-decoration: ${props => props.done ? 'line-through': 'auto'}
 `
 
+const StyledLink = styled(Link)`
+  color: lightgreen;
+  text-decoration: none;
+  margin-left: 5px;
+  float: right;
+
+  &:hover {
+    color: #fff;
+  }
+`
+
+const DeleteButton = styled.button`
+  float: left;
+`
+
 class ToDoItem extends Component {
     static defaultProps = {
       done: false
@@ -18,15 +34,22 @@ class ToDoItem extends Component {
       done: this.props.done
     }
   
-    toggleDone = () => {
-      this.setState({done: !this.state.done})
+    toggleDone = () => this.setState({done: !this.state.done})
+    // toggleDone = () => this.props.toggleDone(this.props.id)
+    destroy = () => {
+      this.props.destroy(this.props.id)
+      this.setState({done: false})
     }
   
     render() {
-      const { text } = this.props
+      const { id, text } = this.props
       return(
-        <Item onClick={this.toggleDone} done={this.state.done}>
-          {text}
+        <Item done={this.state.done}>
+          <DeleteButton onClick={this.destroy}>[x]</DeleteButton>
+          <div onClick={this.toggleDone}>
+            {text}
+            <StyledLink to={`/todo_items/${id}`}>edit</StyledLink>
+          </div>
         </Item>
       )
     }
