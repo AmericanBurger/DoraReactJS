@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const ErrorMsg = styled.div`
   color: red;
+  clear: both;
 `
 
 export const SubmitButton = styled.button`
@@ -11,6 +12,7 @@ export const SubmitButton = styled.button`
   color: #fff;
   margin-bottom: 10px;
   background: #232632;
+  clear: both;
 `
 
 export const TextInput = styled.input`
@@ -28,8 +30,9 @@ export const Label = styled.label`
   flex-direction: column;
   color: #777;
   font-size: 0.8em;
-  margin: 0.5em 0;
+  margin-right: 50px;
   position: relative;
+  float: left;
 `
 
 export const Select = styled.select`
@@ -38,4 +41,8 @@ export const Select = styled.select`
   background: #232632;
   border: 0px;
   height: 25px;
+`
+
+export const Check = styled.input`
+  height: 20px;
 `

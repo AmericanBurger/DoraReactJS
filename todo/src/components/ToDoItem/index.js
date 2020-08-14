@@ -46,10 +46,8 @@ class ToDoItem extends Component {
       return(
         <Item done={this.state.done}>
           <DeleteButton onClick={this.destroy}>[x]</DeleteButton>
-          <div onClick={this.toggleDone}>
-            {text}
-            <StyledLink to={`/todo_items/${id}`}>edit</StyledLink>
-          </div>
+          <StyledLink to={`/todo_items/${id}`}>edit</StyledLink>
+          <div onClick={this.toggleDone}>{text}</div>
         </Item>
       )
     }
