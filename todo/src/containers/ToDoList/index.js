@@ -27,16 +27,12 @@ class ToDoList extends Component {
 
   static defaultProps = {
       tasks: [
-        {text: 'first task'},
-        {text: 'second task'},
-        {text: 'third task'},
-        {text: 'fourth task'},
-        {text: 'fifth task'},
-        {text: 'sixth task'},
-        {text: 'seventh task'},
-        {text: 'eighth task'}
+        {text: 'PC'},
+        {text: 'TV'},
+        {text: 'Mobile'},
+        {text: 'Tablet'},
       ],
-      title: "To do:"
+      title: "Thing List:"
   }
 
   state = {
@@ -51,11 +47,12 @@ class ToDoList extends Component {
   addToDo = () => {
     const { tasks, draft } = this.state
     const list = tasks
-    list.push({text: draft, done: false})
-    // const task = toDoItemApi.create({text: draft})
-
-    this.setState({tasks: list, draft: ''})
-    // this.setState({tasks: _.append(task, tasks), draft: ''})
+    
+    if(draft !== ''){
+      list.push({text: draft, done: false})
+      this.setState({tasks: list, draft: ''})
+    }
+    
   }
 
   findById = (id, arr) => {

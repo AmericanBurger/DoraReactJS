@@ -15,7 +15,7 @@ const Button = styled.button`
 
 const TextInput = styled.input`
   padding: 5px;
-  font-size: .7em;
+  font-size: 1em;
   background: #232632;
   color: #d3d4d6;
   width: 100%;
@@ -31,14 +31,38 @@ const Container = styled.div`
   background: #232632;
   border-radius: 10px;
   padding: 5px;
+  height: 50px;
+  clear: both;
+`
+
+const Label = styled.label`
+  display: flex;
+  flex-direction: column;
+  color: #777;
+  font-size: 0.8em;
+  margin-right: 50px;
+  position: relative;
 `
 
 const NewToDoForm = ({onChange, draft, onSubmit}) => (
+  <div>
     <Container>
+      <Label>Name</Label>
       <TextInput type='text' onChange={onChange} value={draft} />
+    </Container>
+
+    <Container>
+      <Label>Bought_at</Label>
+      <TextInput type='date' />
+    </Container>
+
+    <Container>
+      <Label>Store</Label>
+      <TextInput type='text' />
       <Button onClick={onSubmit}>+</Button>
     </Container>
-  )
+  </div>
+)
 
-  export default NewToDoForm
+export default NewToDoForm
   
