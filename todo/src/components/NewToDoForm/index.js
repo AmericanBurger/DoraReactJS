@@ -45,7 +45,7 @@ const Label = styled.label`
 `
 
 const NewToDoForm = ({onChange, draft, onSubmit}) => (
-  <div>
+  <div><br/>
     <Container>
       <Label>Name</Label>
       <TextInput type='text' onChange={onChange} value={draft} />
