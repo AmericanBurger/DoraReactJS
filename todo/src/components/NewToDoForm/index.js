@@ -52,7 +52,7 @@ const NewToDoForm = ({onChange, draft, onSubmit}) => (
     </Container>
 
     <Container>
-      <Label>Bought_at</Label>
+      <Label>Bought at</Label>
       <TextInput type='date' />
     </Container>
 
