@@ -35,7 +35,7 @@ class ToDoItem extends Component {
     }
   
     toggleDone = () => this.setState({done: !this.state.done})
-    // toggleDone = () => this.props.toggleDone(this.props.id)
+    
     destroy = () => {
       this.props.destroy(this.props.id)
       this.setState({done: false})

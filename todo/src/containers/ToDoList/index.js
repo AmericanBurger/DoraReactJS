@@ -4,6 +4,7 @@ import NewToDoForm from '../../components/NewToDoForm'
 import styled from 'styled-components'
 import * as toDoItemApi from '../../helpers/toDoItemApi'
 import * as _ from 'ramda'
+import uniqid from 'uniqid'
 
 const Header = styled.h1`
   color: #fff;
@@ -27,10 +28,10 @@ class ToDoList extends Component {
 
   static defaultProps = {
       tasks: [
-        {text: 'PC'},
-        {text: 'TV'},
-        {text: 'Mobile'},
-        {text: 'Tablet'},
+        {id: 0, text: 'PC'},
+        {id: 1, text: 'TV'},
+        {id: 2, text: 'Mobile'},
+        {id: 3, text: 'Tablet'},
       ],
       title: "Thing List:"
   }
@@ -49,7 +50,7 @@ class ToDoList extends Component {
     const list = tasks
     
     if(draft !== ''){
-      list.push({text: draft, done: false})
+      list.push({id: uniqid(), text: draft, done: false})
       this.setState({tasks: list, draft: ''})
     }
     

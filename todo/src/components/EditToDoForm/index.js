@@ -6,9 +6,7 @@ import {
     SubmitButton,
     TextInput,
     Label,
-    Select,
     ErrorMsg,
-    Check
 } from '../../helpers/theme'
 import * as _ from 'ramda'
 
@@ -62,7 +60,7 @@ class EditToDoForm extends Component {
                     }) => (
                         <form onSubmit={handleSubmit}>
                             <Label>
-                                Content *
+                                Name *
                                 <ErrorMsg>{errors.content}</ErrorMsg>
                             </Label>
                             <TextInput 
@@ -71,23 +69,14 @@ class EditToDoForm extends Component {
                                 value={values.content}
                             />
                             <br/><br/>
-                            
-                            <Label>
-                                Priority
-                                <Select name='priority' onChange={handleChange}
-                                    value={values.priority}>
-                                        <option value='low'>Low</option>
-                                        <option value='high'>High</option>
-                                        <option value='urgent'>Urgent</option>
-                                </Select>
-                            </Label>
 
-                            <Label>
-                                Done?
-                                <Check type='checkbox' name='done' value={values.done}
-                                    checked={values.done} onChange={handleChange} />
-                            </Label>
-                            <br/><br/><br/><br/>
+                            <Label>Bought at</Label>
+                            <TextInput type='date' />
+                            <br/><br/>
+
+                            <Label>Store</Label>
+                            <TextInput name='store' />
+                            <br/><br/><br/>
                             
                             <SubmitButton type='submit' disabled={this.state.disabled}>
                                 Update
